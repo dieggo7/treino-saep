@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pista · Dashboard</title>
+  <style>
+    :root{color-scheme:light;--ink:#172b26;--muted:#718078;--line:#e5ebe6;--green:#176b50;--lime:#d8ef83;--paper:#f5f7f2;--white:#fff;--red:#b5483b}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}button,input{font:inherit}button{cursor:pointer}
+    .layout{min-height:100vh;display:grid;grid-template-columns:250px 1fr}.sidebar{background:#143c31;color:#eaf1eb;padding:30px 20px;display:flex;flex-direction:column;gap:48px}.brand{display:flex;align-items:center;gap:11px;font-size:20px;font-weight:750;letter-spacing:-.04em}.brand-mark{width:35px;height:35px;border-radius:11px;background:var(--lime);color:#153c31;display:grid;place-items:center;font-size:20px}.nav-label{font-size:10px;letter-spacing:.16em;color:#9eb5a7;font-weight:700;margin:0 0 10px 12px}.nav-item{display:flex;align-items:center;gap:12px;border-radius:10px;padding:11px 13px;color:#b8cbbf}.nav-item.active{background:#285543;color:#fff}.nav-icon{width:20px;text-align:center;font-size:17px}.side-foot{margin-top:auto;font-size:12px;color:#a9bdb1}.content{padding:34px clamp(20px,4vw,58px) 60px;max-width:1500px;width:100%;margin:0 auto}.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:36px}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--green);font-weight:750}.top-actions{display:flex;align-items:center;gap:14px;color:var(--muted);font-size:13px}.avatar{width:37px;height:37px;border-radius:50%;display:grid;place-items:center;background:#dcebdc;color:var(--green);font-weight:750}.title-row{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:27px}.title-row h1{font-size:clamp(28px,4vw,39px);line-height:1.1;letter-spacing:-.055em;margin:6px 0}.subtitle{color:var(--muted);margin:8px 0 0}.button{border:0;border-radius:9px;padding:11px 16px;font-weight:700;transition:.15s}.button:hover{transform:translateY(-1px)}.primary{background:var(--green);color:white}.secondary{background:#edf2ed;color:var(--ink)}.danger{background:#fff0ed;color:var(--red)}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:22px}.stat,.panel{background:var(--white);border:1px solid var(--line);border-radius:14px}.stat{padding:20px 22px}.stat-head{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:13px}.stat-icon{width:33px;height:33px;border-radius:10px;background:#edf5ec;display:grid;place-items:center;color:var(--green);font-size:16px}.stat-value{font-size:30px;font-weight:760;letter-spacing:-.05em;margin:12px 0 1px}.stat-note{font-size:12px;color:var(--muted)}.grid{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:17px}.panel{padding:22px}.panel-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:17px}.panel-heading h2{font-size:16px;letter-spacing:-.02em;margin:0}.panel-heading p{margin:4px 0 0;color:var(--muted);font-size:12px}.badge{border-radius:20px;padding:5px 9px;background:#eef5e7;color:#467231;font-size:11px;font-weight:700}table{width:100%;border-collapse:collapse;text-align:left}th{font-size:10px;color:#8a9790;text-transform:uppercase;letter-spacing:.11em;font-weight:700;padding:10px 8px;border-bottom:1px solid var(--line)}td{padding:12px 8px;border-bottom:1px solid #edf0ed;font-size:13px}tbody tr:last-child td{border-bottom:0}.rank{font-weight:750;color:#839087;width:34px}.runner{display:flex;align-items:center;gap:10px;font-weight:650}.runner-avatar{width:31px;height:31px;border-radius:10px;background:#eff3e9;color:#476e45;display:grid;place-items:center;font-size:11px;font-weight:750}.muted{color:var(--muted)}.time{font-variant-numeric:tabular-nums;font-weight:650}.row-actions{display:flex;gap:6px;justify-content:end}.icon-btn{border:0;background:#f2f5f1;color:#647269;width:29px;height:29px;border-radius:7px}.icon-btn:hover{background:#e6eee6;color:var(--green)}.side-stack{display:flex;flex-direction:column;gap:17px}.best-card{background:var(--green);color:white;border-radius:14px;padding:22px;position:relative;overflow:hidden}.best-card:after{content:"";position:absolute;width:150px;height:150px;border:1px solid #ffffff24;border-radius:50%;right:-65px;top:-65px;box-shadow:0 0 0 18px #ffffff0a,0 0 0 38px #ffffff08}.best-card .eyebrow{color:#cbe28c}.best-label{font-size:12px;color:#c7d9ce;margin-top:18px}.best-time{font-size:31px;letter-spacing:-.05em;font-weight:750;margin:0}.best-name{font-size:13px;color:#d7e6dc}.record-icon{position:absolute;right:18px;bottom:18px;font-size:30px;color:#d8ef83}.leader-list{display:flex;flex-direction:column}.leader{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #edf0ed}.leader:last-child{border:0}.leader-rank{width:22px;color:#8a9790;font-weight:700;font-size:12px}.leader-name{flex:1;font-size:13px;font-weight:650}.leader-value{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}.empty,.loading{padding:26px;text-align:center;color:var(--muted);font-size:13px}.status{min-height:20px;color:var(--muted);font-size:12px;margin:12px 0 0}.status.error{color:var(--red)}.modal-backdrop{position:fixed;inset:0;background:#10271f88;display:none;align-items:center;justify-content:center;padding:18px;z-index:5}.modal-backdrop.open{display:flex}.modal{width:min(100%,440px);background:white;border-radius:16px;padding:25px;box-shadow:0 20px 60px #10271f30}.modal h2{margin:0 0 5px;font-size:20px;letter-spacing:-.03em}.modal>p{margin:0 0 20px;color:var(--muted);font-size:13px}.field{display:grid;gap:6px;margin-bottom:14px}.field label{font-size:12px;font-weight:700}.field input{border:1px solid #dce4dc;border-radius:8px;padding:10px 11px;outline:none}.field input:focus{border-color:var(--green);box-shadow:0 0 0 3px #176b5018}.modal-actions{display:flex;justify-content:end;gap:9px;margin-top:20px}
+    @media(max-width:1000px){.grid{grid-template-columns:1fr}.side-stack{display:grid;grid-template-columns:1fr 1fr}}@media(max-width:700px){.layout{grid-template-columns:1fr}.sidebar{padding:14px 18px;gap:0}.brand{font-size:17px}.sidebar nav,.side-foot{display:none}.content{padding:25px 16px 40px}.topbar{margin-bottom:25px}.stats{gap:9px;grid-template-columns:1fr}.stat{padding:15px 17px}.stat-value{font-size:25px}.title-row{align-items:start;flex-direction:column}.side-stack{grid-template-columns:1fr}.panel{padding:17px 13px}th,td{padding:10px 5px}.table-wrap{overflow-x:auto}table{min-width:540px}}
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">↗</span> pista<span style="color:#b9d789">.</span></div>
+      <nav><p class="nav-label">MENU</p><div class="nav-item active"><span class="nav-icon">▦</span> Visão geral</div><div class="nav-item"><span class="nav-icon">♙</span> Corredores</div><div class="nav-item"><span class="nav-icon">⌁</span> Desempenho</div></nav>
+      <div class="side-foot">Painel de acompanhamento<br>Treino SAEP</div>
+    </aside>
+    <main class="content">
+      <header class="topbar"><span class="eyebrow">CENTRO DE CONTROLE</span><div class="top-actions"><span id="today"></span><span class="avatar">SA</span></div></header>
+      <section class="title-row"><div><span class="eyebrow">VISÃO GERAL</span><h1>Olá, equipe 👋</h1><p class="subtitle">Acompanhe os corredores e os resultados da pista.</p></div><button class="button primary" id="add-runner">＋ Novo corredor</button></section>
+      <section class="stats">
+        <article class="stat"><div class="stat-head"><span>Corredores cadastrados</span><span class="stat-icon">♙</span></div><div class="stat-value" id="runner-count">—</div><div class="stat-note">Participantes registrados</div></article>
+        <article class="stat"><div class="stat-head"><span>Voltas registradas</span><span class="stat-icon">⌁</span></div><div class="stat-value" id="lap-count">—</div><div class="stat-note">Somatório das voltas por corredor</div></article>
+        <article class="stat"><div class="stat-head"><span>Corredores no ranking</span><span class="stat-icon">↗</span></div><div class="stat-value" id="rank-count">—</div><div class="stat-note">Com resultado de corrida</div></article>
+      </section>
+      <section class="grid">
+        <article class="panel"><div class="panel-heading"><div><h2>Ranking de corredores</h2><p>Classificação pelo menor tempo total</p></div><span class="badge">TEMPO TOTAL</span></div><div class="table-wrap"><table><thead><tr><th>#</th><th>Corredor</th><th>Turma</th><th>Tempo total</th><th>Ações</th></tr></thead><tbody id="ranking"><tr><td colspan="5" class="loading">Carregando resultados...</td></tr></tbody></table></div><p class="status" id="page-status" aria-live="polite"></p></article>
+        <div class="side-stack"><article class="best-card"><span class="eyebrow">DESTAQUE DA PISTA</span><div class="best-label">Melhor volta</div><p class="best-time" id="best-time">—</p><div class="best-name" id="best-name">Buscando resultado...</div><span class="record-icon">✳</span></article>
+        <article class="panel"><div class="panel-heading"><div><h2>Mais voltas</h2><p>Volume acumulado por corredor</p></div></div><div class="leader-list" id="laps-ranking"><div class="loading">Carregando...</div></div></article></div>
+      </section>
+    </main>
+  </div>
+  <div class="modal-backdrop" id="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title"><form class="modal" id="runner-form"><h2 id="modal-title">Novo corredor</h2><p>Preencha os dados para registrar um participante.</p><input type="hidden" id="runner-id"><div class="field"><label for="runner-name">Nome</label><input id="runner-name" name="nome" required autocomplete="name" placeholder="Nome do corredor"></div><div class="field"><label for="runner-class">Turma</label><input id="runner-class" name="turma" required placeholder="Ex.: 2º A"></div><div class="field"><label for="runner-password">Senha <span id="password-hint"></span></label><input id="runner-password" name="senha" type="password" required autocomplete="new-password" placeholder="Senha"></div><div class="status" id="form-status" aria-live="polite"></div><div class="modal-actions"><button type="button" class="button secondary" id="cancel-modal">Cancelar</button><button class="button primary" type="submit">Salvar corredor</button></div></form></div>
+  <script>
+    const API = '/api/corredores';
+    const $ = (selector) => document.querySelector(selector);
+    const number = new Intl.NumberFormat('pt-BR');
+    let runners = [];
+    $('#today').textContent = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'medium' }).format(new Date());
+
+    async function request(path, options = {}) {
+      const response = await fetch(`${API}${path}`, { ...options, headers: { 'Content-Type': 'application/json', ...(options.headers || {}) } });
+      const body = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(body.error || 'Não foi possível concluir a solicitação.');
+      return body;
+    }
+    function time(value) {
+      if (value == null || value === '') return '—';
+      if (typeof value === 'string' && value.includes(':')) return value;
+      const seconds = Number(value);
+      if (!Number.isFinite(seconds)) return String(value);
+      const minutes = Math.floor(seconds / 60), rest = (seconds % 60).toFixed(2).padStart(5, '0');
+      return `${String(minutes).padStart(2, '0')}:${rest}`;
+    }
+    function initials(name = '') { return name.trim().split(/\s+/).slice(0, 2).map(part => part[0] || '').join('').toUpperCase(); }
+    function setStatus(message, error = false) { const el = $('#page-status'); el.textContent = message; el.classList.toggle('error', error); }
+    function renderRanking(rows) {
+      const body = $('#ranking');
+      if (!rows.length) { body.innerHTML = '<tr><td colspan="5" class="empty">Ainda não há resultados no ranking.</td></tr>'; return; }
+      body.innerHTML = rows.map((row, i) => {
+        const runner = runners.find(item => String(item.id) === String(row.id));
+        const name = row.nome || 'Corredor';
+        return `<tr><td class="rank">${String(i + 1).padStart(2, '0')}</td><td><div class="runner"><span class="runner-avatar">${initials(name)}</span>${escapeHtml(name)}</div></td><td class="muted">${escapeHtml(row.turma || '—')}</td><td class="time">${time(row.tempo_total)}</td><td><div class="row-actions">${runner ? `<button class="icon-btn" title="Editar ${escapeHtml(name)}" data-edit="${runner.id}">✎</button><button class="icon-btn" title="Excluir ${escapeHtml(name)}" data-delete="${runner.id}">×</button>` : ''}</div></td></tr>`;
+      }).join('');
+    }
+    function escapeHtml(value) { return String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]); }
+    function renderLaps(rows) {
+      const list = $('#laps-ranking');
+      if (!rows.length) { list.innerHTML = '<div class="empty">Ainda não há voltas registradas.</div>'; return; }
+      list.innerHTML = rows.slice(0, 5).map((row, i) => `<div class="leader"><span class="leader-rank">${String(i + 1).padStart(2, '0')}</span><span class="leader-name">${escapeHtml(row.nome || 'Corredor')}</span><span class="leader-value">${number.format(Number(row.total_voltas || 0))} voltas</span></div>`).join('');
+    }
+    async function loadDashboard() {
+      setStatus('');
+      try {
+        const [all, ranking, laps, best] = await Promise.all([
+          request('/cadastrados'), request('/ranking'), request('/voltas'), request('/melhor-volta')
+        ]);
+        runners = Array.isArray(all) ? all : [];
+        const ranked = Array.isArray(ranking) ? ranking : [];
+        const lapRows = Array.isArray(laps) ? laps : [];
+        $('#runner-count').textContent = number.format(runners.length);
+        $('#rank-count').textContent = number.format(ranked.length);
+        $('#lap-count').textContent = number.format(lapRows.reduce((sum, item) => sum + Number(item.total_voltas || 0), 0));
+        renderRanking(ranked); renderLaps(lapRows);
+        $('#best-time').textContent = best && best.tempo != null ? time(best.tempo) : '—';
+        $('#best-name').textContent = best && best.nome ? best.nome : 'Nenhuma volta registrada';
+      } catch (error) {
+        $('#ranking').innerHTML = '<tr><td colspan="5" class="empty">Não foi possível carregar os dados.</td></tr>';
+        $('#laps-ranking').innerHTML = '<div class="empty">Não foi possível carregar os dados.</div>';
+        $('#best-name').textContent = 'API indisponível';
+        setStatus(`${error.message} Confira se o servidor está ativo.`, true);
+      }
+    }
+    function openModal(runner = null) {
+      $('#runner-form').reset(); $('#form-status').textContent = '';
+      $('#runner-id').value = runner?.id || '';
+      $('#modal-title').textContent = runner ? 'Editar corredor' : 'Novo corredor';
+      $('#runner-name').value = runner?.nome || '';
+      $('#runner-class').value = runner?.turma || '';
+      $('#runner-password').required = !runner;
+      $('#runner-password').placeholder = runner ? 'Informe a nova senha' : 'Senha';
+      $('#password-hint').textContent = runner ? '(deixe vazio para manter)' : '';
+      $('#modal-backdrop').classList.add('open'); $('#runner-name').focus();
+    }
+    function closeModal() { $('#modal-backdrop').classList.remove('open'); }
+    $('#add-runner').addEventListener('click', () => openModal());
+    $('#cancel-modal').addEventListener('click', closeModal);
+    $('#modal-backdrop').addEventListener('click', event => { if (event.target === $('#modal-backdrop')) closeModal(); });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape') closeModal(); });
+    $('#runner-form').addEventListener('submit', async event => {
+      event.preventDefault();
+      const id = $('#runner-id').value;
+      const payload = { nome: $('#runner-name').value.trim(), turma: $('#runner-class').value.trim(), senha: $('#runner-password').value };
+      if (id && !payload.senha) delete payload.senha;
+      const status = $('#form-status'); status.textContent = 'Salvando...'; status.classList.remove('error');
+      try {
+        await request(id ? `/${encodeURIComponent(id)}` : '', { method: id ? 'PUT' : 'POST', body: JSON.stringify(payload) });
+        closeModal(); await loadDashboard();
+      } catch (error) { status.textContent = error.message; status.classList.add('error'); }
+    });
+    $('#ranking').addEventListener('click', async event => {
+      const edit = event.target.closest('[data-edit]');
+      const remove = event.target.closest('[data-delete]');
+      if (edit) { const runner = runners.find(item => String(item.id) === edit.dataset.edit); if (runner) openModal(runner); }
+      if (remove) {
+        const runner = runners.find(item => String(item.id) === remove.dataset.delete);
+        if (!runner || !window.confirm(`Excluir ${runner.nome}? Esta ação não pode ser desfeita.`)) return;
+        try { await request(`/${encodeURIComponent(runner.id)}`, { method: 'DELETE' }); await loadDashboard(); }
+        catch (error) { setStatus(error.message, true); }
+      }
+    });
+    loadDashboard();
+  </script>
+</body>
+</html>

@@ -1,29 +1,18 @@
 const express = require('express');
-const app = express();
-const path = require ('path');
+const path = require('path');
 const cors = require('cors');
 
+const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
-//configurar CORS 
-app.use(cors({
-    origin: '*',
-    credentials: true
-}));
+app.use(express.static(path.join(__dirname, '../front')));
+app.use('/api/users', require('./routes/users'));
+app.use('/api/corredores', require('./routes/corredores'));
 
-//servir arquivos estáticos do front-end
-app.use(express.static(path.join(__dirname, '../front/build')));
-
-//rotas da api
-
-const userRouter = require ('./routes/userRoutes');
-app.use('/api/users', userRouter);
-
-const corredoresRouter = require ('./routes/corredoresRoutes');
-app.use('/api/corredores', corredoresRouter);
-
-//rota raiz (login)
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../front', 'login.html'));
+    res.sendFile(path.join(__dirname, '../front/dashboard.html'));
 });
+
+module.exports = app;
